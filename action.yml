@@ -1,0 +1,16 @@
+---
+name: 'Helm'
+description: 'Github Action with Helm v3'
+inputs:
+  kubeconfig:
+    description: 'kubeconfig file contents'
+    required: true
+  command:
+    description: 'command to run'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://akabos/action-helm:latest'
+  args:
+    - ${{ inputs.kubeconfig }}
+    - ${{ inputs.command }}
