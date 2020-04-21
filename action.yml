@@ -10,7 +10,7 @@ inputs:
     required: true
 runs:
   using: 'docker'
-  image: 'docker://akabos/action-helm:latest'
+  image: 'docker://akabos/action-helm:sha-82fb280'
   args:
     - ${{ inputs.kubeconfig }}
     - ${{ inputs.command }}
