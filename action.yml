@@ -31,11 +31,11 @@ runs:
   using: 'docker'
   image: 'docker://alpine/helm:3.2.0'
   args:
-    - --kubeconfig=${{ input.kubeconfig }}
-    - --namespace=${{ input.namespace }}
+    - --kubeconfig=${{ inputs.kubeconfig }}
+    - --namespace=${{ inputs.namespace }}
     - upgrade
-    - ${{ input.release }}
-    - ${{ input.chart }}
-    - --timeout=${{ input.timeout }}
-    - --values=${{ input.values }}
-    - --set=${{ input.set }}
+    - ${{ inputs.release }}
+    - ${{ inputs.chart }}
+    - --timeout=${{ inputs.timeout }}
+    - --values=${{ inputs.values }}
+    - --set=${{ inputs.set }}
