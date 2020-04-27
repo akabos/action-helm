@@ -1,16 +1,41 @@
 ---
-name: 'Helm'
-description: 'Github Action with Helm v3'
+name: 'Helm Upgrade Release'
+description: 'Install or upgrade helm release'
 inputs:
   kubeconfig:
-    description: 'kubeconfig file contents'
+    description: 'kubeconfig file path'
+    default: '~/.kube/config'
     required: true
-  command:
-    description: 'command to run'
+  release:
+    description: 'release name'
     required: true
+  chart:
+    description: 'chart'
+    required: true
+  namespace:
+    description: 'namespace scope'
+    required: true
+    default: 'default'
+  timeout:
+    description: 'time to wait for any individual operation'
+    required: false
+    default: '5m0s'
+  values:
+    description: 'specify values in a YAML file, or a URL'
+    required: false
+  set:
+    description: 'specify values (coma-separated list)'
+    required: false
+
 runs:
   using: 'docker'
-  image: 'docker://akabos/action-helm:sha-82fb280'
+  image: 'docker://alpine/helm:3.2.0'
   args:
-    - ${{ inputs.kubeconfig }}
-    - ${{ inputs.command }}
+    - --kubeconfig=${{ inputs.kubeconfig }}
+    - --namespace=${{ inputs.namespace }}
+    - upgrade
+    - ${{ inputs.release }}
+    - ${{ inputs.chart }}
+    - --timeout=${{ inputs.timeout }}
+    - --values=${{ inputs.values }}
+    - --set=${{ inputs.set }}
