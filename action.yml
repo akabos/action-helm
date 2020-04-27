@@ -1,6 +1,6 @@
 ---
 name: 'Helm Upgrade Release'
-description: ''
+description: 'Install or upgrade helm release'
 inputs:
   kubeconfig:
     description: 'kubeconfig file path'
