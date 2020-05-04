@@ -34,6 +34,7 @@ runs:
     - --kubeconfig=${{ inputs.kubeconfig }}
     - --namespace=${{ inputs.namespace }}
     - upgrade
+    - --install
     - ${{ inputs.release }}
     - ${{ inputs.chart }}
     - --atomic
