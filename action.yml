@@ -29,7 +29,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://alpine/helm:3.5.3'
+  image: 'docker://alpine/helm:3.6.2'
   args:
     - --kubeconfig=${{ inputs.kubeconfig }}
     - --namespace=${{ inputs.namespace }}
